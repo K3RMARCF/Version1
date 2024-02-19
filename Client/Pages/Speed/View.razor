@@ -1,14 +1,64 @@
-﻿@page "/Tasks/view/{id:int}"
+﻿@page "/Speeds/view/{id:int}"
 @inject HttpClient _client
 @inject NavigationManager _navManager
 <h3>View</h3>
-<FormComponent tasks="@tasks" Disabled="true" />
-@code {
-     [Parameter] public int id { get; set; }
-     Speed tasks = new Speed();
 
-    protected async override Task OnParametersSetAsync()
+<style>
+    .speed-display {
+        width: 50px; /* Set your desired width */
+        height: 50px; /* Set your desired height */
+        border: 1px solid #ccc;
+    }
+
+    .green {
+        background-color: green;
+    }
+
+    .orange {
+        background-color: orange;
+    }
+
+    .red {
+        background-color: red;
+    }
+</style>
+
+<div>
+    <h4>Speed Range Display</h4>
+    <div id="speedDisplay" class="speed-display @GetSpeedDisplayClass()"></div>
+</div>
+
+<FormComponent tasks="@tasks" Disabled="true" />
+
+@code {
+    [Parameter] public int id { get; set; }
+    Speed tasks = new Speed();
+
+    protected async override Task OnInitializedAsync()
+    {
+        await LoadData();
+    }
+
+    protected async Task LoadData()
     {
         tasks = await _client.GetFromJsonAsync<Speed>($"{Endpoints.ColoursEndpoint}/{id}");
+        StateHasChanged();
+    }
+
+    // Dynamically set the CSS class for the speed display based on the speed range
+    private string GetSpeedDisplayClass()
+    {
+        if (tasks.SpeedValue < 1000)
+        {
+            return "green";
+        }
+        else if (tasks.SpeedValue >= 1000 && tasks.SpeedValue <= 3000)
+        {
+            return "orange";
+        }
+        else
+        {
+            return "red";
+        }
     }
 }

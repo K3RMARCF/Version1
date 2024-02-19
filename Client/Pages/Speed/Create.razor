@@ -1,4 +1,4 @@
-﻿@page "/Tasks/create"
+﻿@page "/Speeds/create"
 @using PracTest.Client.Static;
 @inject HttpClient _client
 @inject IJSRuntime js
@@ -22,7 +22,7 @@
     private async Task CreateTask()
     {
         await _client.PostAsJsonAsync(Endpoints.ColoursEndpoint, tasks);
-        _navManager.NavigateTo("/Tasks/");
+        _navManager.NavigateTo("/Speeds/");
     }
 
 }

@@ -1,4 +1,4 @@
-﻿@page "/Tasks/"
+﻿@page "/Speeds/"
 @using PracTest.Client.Services;
 @using PracTest.Client.Static;
 @inject HttpClient _client
@@ -9,7 +9,7 @@
 
 
 <h3 class="card-title">Speed Values</h3>
-<a href="/Tasks/create" class="btn btn-secondary">
+<a href="/Speeds/create" class="btn btn-secondary">
     <span class="oi oi-plus"></span>
     Create New Speed Values
 </a>
@@ -40,10 +40,10 @@ else
 
 
                     <td>
-                        <a href="/Tasks/view/@task.Id" class="btn btn-primary">
+                        <a href="/Speeds/view/@task.Id" class="btn btn-primary">
                             <span class="oi oi-book"></span>
                         </a>
-                        <a href="/Tasks/edit/@task.Id" class="btn btn-warning">
+                        <a href="/Speeds/edit/@task.Id" class="btn btn-warning">
                             <span class="oi oi-pencil"></span>
                         </a>
 
