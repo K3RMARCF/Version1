@@ -1,0 +1,98 @@
+﻿@page "/Tasks/"
+@using PracTest.Client.Services;
+@using PracTest.Client.Static;
+@inject HttpClient _client
+@inject HttpInterceptorService _interceptor
+@implements IDisposable
+@inject IJSRuntime js
+@attribute [Authorize]
+
+
+<h3 class="card-title">Students</h3>
+<a href="/Tasks/create" class="btn btn-secondary">
+    <span class="oi oi-plus"></span>
+    Create New Students
+</a>
+<br />
+<br />
+
+@if (Tasks == null)
+{
+    <div class="alert alert-info">Loading Tasks....</div>
+}
+else
+{
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Broke</th>
+                <th>Birthday</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var task in Tasks)
+            {
+                <tr>
+                    <td>@task.Id</td>
+                    <td>@task.Name</td>
+                    <td>@task.HexCode</td>
+
+
+                    <td>
+                        <a href="/Tasks/view/@task.Id" class="btn btn-primary">
+                            <span class="oi oi-book"></span>
+                        </a>
+                        <a href="/Tasks/edit/@task.Id" class="btn btn-warning">
+                            <span class="oi oi-pencil"></span>
+                        </a>
+
+                        <button class="btn btn-danger" @onclick="@(()=>Delete(task.Id))">
+                            <span class="oi oi-delete"></span>
+                        </button>
+
+                    </td>
+                </tr>
+
+            }
+
+
+        </tbody>
+
+
+
+    </table>
+}
+@code {
+    private List<Colour>? Tasks;
+
+    protected async override Task OnInitializedAsync()
+    {
+        _interceptor.MonitorEvent();
+        Tasks = await _client.GetFromJsonAsync<List<Colour>>($"{Endpoints.ColoursEndpoint}");
+    }
+
+    async Task Delete(int TaskId)
+    {
+        if (Tasks != null)
+        {
+            var task = Tasks.First(q => q.Id == TaskId);
+            var confirm = await js.InvokeAsync<bool>("confirm", $"Do you want to delete {task.Id}?");
+            if (confirm)
+            {
+                await _client.DeleteAsync($"{Endpoints.ColoursEndpoint}/{TaskId}");
+                await OnInitializedAsync();
+            }
+        }
+    }
+
+    public void Dispose()
+    {
+        _interceptor.DisposeEvent();
+    }
+
+   
+
+}

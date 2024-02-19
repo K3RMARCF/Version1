@@ -1,0 +1,28 @@
+﻿@page "/Tasks/create"
+@using PracTest.Client.Static;
+@inject HttpClient _client
+@inject IJSRuntime js
+@attribute [Authorize]
+@inject NavigationManager _navManager
+
+
+
+
+<h3 class="card-title">Create New Task</h3>
+<hr />
+<br />
+
+<FormComponent ButtonText="Create Task" tasks="@tasks" OnValidSubmit="@CreateTask" />
+
+
+
+@code {
+    Colour tasks = new Colour();
+
+    private async Task CreateTask()
+    {
+        await _client.PostAsJsonAsync(Endpoints.ColoursEndpoint, tasks);
+        _navManager.NavigateTo("/Tasks/");
+    }
+
+}
