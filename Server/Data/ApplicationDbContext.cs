@@ -6,7 +6,7 @@ using PracTest.Server.Models;
 using PracTest.Shared.Domain;
 using PracTest.Server.Models;
 using PracTest.Shared.Domain;
-using PracTest.Server.Configurations.Entities;
+
 
 namespace PracTest.Server.Data
 {
@@ -19,12 +19,12 @@ namespace PracTest.Server.Data
         {
         }
 
-        public DbSet<Colour> Colours { get; set; }
+        public DbSet<Speed> Colours { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-            builder.ApplyConfiguration(new ColourSeedConfiguration());
+            
         }
     }
 }

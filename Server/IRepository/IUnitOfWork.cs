@@ -10,7 +10,7 @@ namespace PracTest.Server.IRepository
     public interface IUnitOfWork : IDisposable
     {
         Task Save(HttpContext httpContext);
-        IGenericRepository<Colour> tasks { get; }
+        IGenericRepository<Speed> tasks { get; }
      
     }
 }

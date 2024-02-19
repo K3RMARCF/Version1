@@ -8,16 +8,16 @@
 
 
 
-<h3 class="card-title">Create New Task</h3>
+<h3 class="card-title">Create New Speed Value</h3>
 <hr />
 <br />
 
-<FormComponent ButtonText="Create Task" tasks="@tasks" OnValidSubmit="@CreateTask" />
+<FormComponent ButtonText="Create Speed Value " tasks="@tasks" OnValidSubmit="@CreateTask" />
 
 
 
 @code {
-    Colour tasks = new Colour();
+    Speed tasks = new Speed();
 
     private async Task CreateTask()
     {

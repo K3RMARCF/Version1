@@ -2,17 +2,17 @@
 @inject HttpClient _client
 @inject NavigationManager _navManager
 
-<h3>Edit Bookings</h3>
+<h3>Edit Speed Value</h3>
 
-<FormComponent ButtonText="Update Task" OnValidSubmit="EditTasks" tasks="@tasks" />
+<FormComponent ButtonText="Update Speed" OnValidSubmit="EditTasks" tasks="@tasks" />
 
 @code {
     [Parameter] public int id { get; set; }
-    Colour tasks = new Colour();
+    Speed tasks = new Speed();
 
     protected async override Task OnParametersSetAsync()
     {
-        tasks = await _client.GetFromJsonAsync<Colour>($"{Endpoints.ColoursEndpoint}/{id}");
+        tasks = await _client.GetFromJsonAsync<Speed>($"{Endpoints.ColoursEndpoint}/{id}");
     }
 
     async Task EditTasks()

@@ -7,17 +7,18 @@ using System.Threading.Tasks;
 
 namespace PracTest.Shared.Domain
 {
-    public class Colour: BaseDomainModel
+    public class Speed: BaseDomainModel
     {
         public int Id { get; set; }
 
-        [Required]
-        [StringLength(100, MinimumLength = 2, ErrorMessage = "Name does not meet length requirements")]
+        
+        
         public string? Name { get; set; }
-        [Required]
+        
         public string? HexCode { get; set;}
 
-
+        [Required]
+        public double SpeedValue { get; set; }
 
     }
 }

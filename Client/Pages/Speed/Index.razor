@@ -8,17 +8,17 @@
 @attribute [Authorize]
 
 
-<h3 class="card-title">Students</h3>
+<h3 class="card-title">Speed Values</h3>
 <a href="/Tasks/create" class="btn btn-secondary">
     <span class="oi oi-plus"></span>
-    Create New Students
+    Create New Speed Values
 </a>
 <br />
 <br />
 
 @if (Tasks == null)
 {
-    <div class="alert alert-info">Loading Tasks....</div>
+    <div class="alert alert-info">Loading Speed Values....</div>
 }
 else
 {
@@ -26,10 +26,8 @@ else
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Name</th>
-                <th>Broke</th>
-                <th>Birthday</th>
-                <th>Price</th>
+                <th>SpeedValue</th>
+                
             </tr>
         </thead>
         <tbody>
@@ -37,8 +35,8 @@ else
             {
                 <tr>
                     <td>@task.Id</td>
-                    <td>@task.Name</td>
-                    <td>@task.HexCode</td>
+                    <td>@task.SpeedValue</td>
+                    
 
 
                     <td>
@@ -66,12 +64,12 @@ else
     </table>
 }
 @code {
-    private List<Colour>? Tasks;
+    private List<Speed>? Tasks;
 
     protected async override Task OnInitializedAsync()
     {
         _interceptor.MonitorEvent();
-        Tasks = await _client.GetFromJsonAsync<List<Colour>>($"{Endpoints.ColoursEndpoint}");
+        Tasks = await _client.GetFromJsonAsync<List<Speed>>($"{Endpoints.ColoursEndpoint}");
     }
 
     async Task Delete(int TaskId)

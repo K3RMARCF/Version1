@@ -18,7 +18,7 @@ namespace PracTest.Server.Repository
     public class UnitOfWork : IUnitOfWork
     {
         private readonly ApplicationDbContext _context;
-        private IGenericRepository<Colour> _tasks;
+        private IGenericRepository<Speed> _tasks;
         
 
         private UserManager<ApplicationUser> _userManager;
@@ -31,7 +31,7 @@ namespace PracTest.Server.Repository
 
      
 
-        public IGenericRepository<Colour> tasks => _tasks ??= new GenericRepository<Colour>(_context);
+        public IGenericRepository<Speed> tasks => _tasks ??= new GenericRepository<Speed>(_context);
 
         public void Dispose()
         {

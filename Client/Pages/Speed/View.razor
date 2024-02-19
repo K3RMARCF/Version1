@@ -5,10 +5,10 @@
 <FormComponent tasks="@tasks" Disabled="true" />
 @code {
      [Parameter] public int id { get; set; }
-     Colour tasks = new Colour();
+     Speed tasks = new Speed();
 
     protected async override Task OnParametersSetAsync()
     {
-        tasks = await _client.GetFromJsonAsync<Colour>($"{Endpoints.ColoursEndpoint}/{id}");
+        tasks = await _client.GetFromJsonAsync<Speed>($"{Endpoints.ColoursEndpoint}/{id}");
     }
 }

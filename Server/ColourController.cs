@@ -45,7 +45,7 @@ namespace PracTest.Server.Controllers
         // PUT: api/Vehicles/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutColour(int id, Colour task)
+        public async Task<IActionResult> PutColour(int id, Speed task)
         {
             if (id != task.Id)
             {
@@ -74,7 +74,7 @@ namespace PracTest.Server.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Colour>> PostColour(Colour task)
+        public async Task<ActionResult<Speed>> PostColour(Speed task)
         {
             await _unitOfWork.tasks.Insert(task);
             await _unitOfWork.Save(HttpContext);
