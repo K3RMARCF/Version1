@@ -20,5 +20,7 @@ namespace PracTest.Shared.Domain
         [Required]
         public double SpeedValue { get; set; }
 
+        public double AccelerationValue { get; set; }
+
     }
 }

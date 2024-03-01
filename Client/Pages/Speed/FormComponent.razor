@@ -13,6 +13,14 @@
             </div>
         </div>
 
+        <div class="form-group">
+            <label>Acceleration Value: </label>
+            <div>
+                <InputNumber @bind-Value="@tasks.AccelerationValue" class="form-control" />
+                <ValidationMessage For="@(() => tasks.AccelerationValue)" />
+            </div>
+        </div>
+
       
     </fieldset>
 
