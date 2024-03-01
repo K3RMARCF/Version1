@@ -8,10 +8,10 @@
 @attribute [Authorize]
 
 
-<h3 class="card-title">Speed Values</h3>
+<h3 class="card-title">Data Entries</h3>
 <a href="/Speeds/create" class="btn btn-secondary">
     <span class="oi oi-plus"></span>
-    Create New Speed Values
+    Create New Data Entry
 </a>
 <br />
 <br />
@@ -26,8 +26,8 @@ else
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Speed</th>
-                <th>Acceleration</th>
+                <th>Speed (mm/sec)</th>
+                <th>Acceleration (mm/sec2)</th>
                 
             </tr>
         </thead>
@@ -37,7 +37,7 @@ else
                 <tr>
                     <td>@task.Id</td>
                     <td>@task.SpeedValue mm/sec</td>
-                    <td>@task.AccelerationValue mm/sec</td>
+                    <td>@task.AccelerationValue mm/sec2</td>
                     
 
 

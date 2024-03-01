@@ -6,7 +6,7 @@
 
 
         <div class="form-group">
-            <label>Speed Value: </label>
+            <label>Speed Value (mm/sec): </label>
             <div>
                 <InputNumber @bind-Value="@tasks.SpeedValue" class="form-control" />
                 <ValidationMessage For="@(() => tasks.SpeedValue)" />
@@ -14,12 +14,12 @@
         </div>
 
         <div class="form-group">
-            <label>Acceleration Value: </label>
+            <label>Acceleration Value (mm/sec2): </label>
             <div>
                 <InputNumber @bind-Value="@tasks.AccelerationValue" class="form-control" />
                 <ValidationMessage For="@(() => tasks.AccelerationValue)" />
             </div>
-        </div>
+        </div>  
 
       
     </fieldset>
